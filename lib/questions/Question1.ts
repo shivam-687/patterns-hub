@@ -8,10 +8,13 @@ export default class Question1 extends Question {
         this.title = 'Question 1';
         this.defaultInput = 5;
         this.setInput(5);
-        this.codeData = {
-            codeTemplate: codeStr,
-            map: {'1': [3], '2': [5,], '3': [9]}
-        }
+        this.codeData = [
+            {
+                codeTemplate: codeStr,
+                map: {'1': [3], '2': [5], '3': [9]},
+                lang: 'javascript'
+            }
+        ]
     }
 
     validateInput(input: number): QuestionError | undefined {
@@ -62,5 +65,4 @@ for (let i = 1; {{i}} <= {{n}}; i++) {
     }
     str += "\\n";
 }
-
 `

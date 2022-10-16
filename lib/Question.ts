@@ -1,3 +1,7 @@
+export const Langs = {
+    JAVASCRIPT: 'javascript',
+    C_LANG: 'c'
+}
 
 export type ProcessHistory = {
     matrix: string[][];
@@ -8,7 +12,8 @@ export type ProcessHistory = {
 
 export type CodeData = {
     codeTemplate: string,
-    map: {[key: string]: number[]}
+    map: {[key: string]: number[]},
+    lang: string
 }
 
 export interface QuestionError extends Error {
@@ -22,7 +27,7 @@ export abstract class Question{
     public defaultInput: number;
     private newLineCharacter: string;
     private input: number;
-    protected codeData?: CodeData;
+    protected codeData?: CodeData[];
     
     constructor(input?: number){
         this.title = 'Question';
