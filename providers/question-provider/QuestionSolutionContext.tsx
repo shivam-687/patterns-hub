@@ -1,4 +1,4 @@
-import React,  { createContext } from "React";
+import React,  { createContext } from "react";
 
 export type QuestionSolutionContextProps = {
     matrix: string[][],
