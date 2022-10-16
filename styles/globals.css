@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+.ubuntu{
+  font-family: 'Ubuntu', sans-serif;
+}
+
+@layer base{
+  body{
+    @apply font-mono;
+  }
+}
+@layer components{
+  /* *{
+    @apply duration-300 !important;
+  } */
+  /* .btn{
+    @apply rounded-none;
+  } */
+
+  .mark{
+    @apply outline-dashed outline-red-500;
+  }
+
+  .slide{
+    @apply h-44;
+  }
+
+  .visible_byte{
+    @apply opacity-100 ;
+  }
+  .invisible_byte{
+    @apply opacity-0 ;
+  }
+}
+
+/* .hljs{
+  background: #000 !important;
+} */
+
+.byte{
+  animation: byte-animate 300ms ease-in forwards;
+}
+
+@keyframes byte-animate{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
