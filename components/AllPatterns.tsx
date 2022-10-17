@@ -13,7 +13,7 @@ const AllPatterns = () => {
   return (
     <>
       <div className='container mx-auto px-5'>
-        <div className='text-2xl'>AllQuestions</div>
+        <div className='text-2xl'>All Patterns</div>
 
         <div className='pt-10 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-5'>
           {

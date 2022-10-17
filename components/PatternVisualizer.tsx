@@ -45,7 +45,6 @@ const PatternVisualizer = (props: PatternVisualizerProps) => {
     }, [props.data])
 
     useEffect(() => {
-        // console.log('HistoryArray: ', historyArray)
         let interval: any = null;
         if (isPaused === false) {
             interval = setInterval(() => {
@@ -136,7 +135,8 @@ const PatternVisualizer = (props: PatternVisualizerProps) => {
     return (
         <div className=" w-full h-full relative flex flex-col">
             
-            <div className="flex-grow overflow-auto scrollbar-thin scrollbar-track-primary">
+            
+            <div className=" flex-grow overflow-auto scrollbar-thin scrollbar-thumb-primary scrollbar-track-primary-focus pb-5">
                 <div className='w-max h-max'>
                     {
                         matrix.map((d, index) => {
@@ -145,16 +145,20 @@ const PatternVisualizer = (props: PatternVisualizerProps) => {
                     }
                 </div>
             </div>
-            <div>
+
+            <div className='flex-grow-0'>
                 <div className="flex items-center gap-5 px-5 mb-5">
-                    <button onClick={prev} className='btn btn-sm btn-outline btn-primary text-xl md:text-2xl' disabled={count === 0}><IoPlayBack /></button>
-                    <button onClick={togglePause} className='btn btn-sm btn-outline btn-primary text-xl md:text-2xl'>{isPaused ? isCompleted ? <MdReplay /> : <IoPlay /> : <IoPause />}</button>
-                    <button onClick={next} className='btn btn-sm btn-outline btn-primary text-xl md:text-2xl' disabled={isCompleted || count > historyArray.length - 1}><IoPlayForward /></button>
-                    {/* <div className=''> */}
+                    <button onClick={prev} className='btn btn-sm btn-outline btn-primary text-xl md:text-xl' disabled={count === 0}><IoPlayBack /></button>
+                    <button onClick={togglePause} className='btn btn-sm btn-outline btn-primary text-xl md:text-xl'>{isPaused ? isCompleted ? <MdReplay /> : <IoPlay /> : <IoPause />}</button>
+                    <button onClick={next} className='btn btn-sm btn-outline btn-primary text-xl md:text-xl' disabled={isCompleted || count > historyArray.length - 1}><IoPlayForward /></button>
+                 
+                    <div className="max-w-md">
                     <input type="range" min="10" max="1010" value={speed} className={`range range-xs ${isPaused && 'range-primary'}`} step="200" onChange={handleSpeedChange} disabled={!isPaused} />
-                    {/* </div> */}
+                    </div>
+                
                 </div>
             </div>
+            
         </div>
     )
 }

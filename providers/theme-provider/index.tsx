@@ -1,8 +1,11 @@
 import React, { PropsWithChildren, useEffect, useState } from 'react'
 import { ThemeContext } from './ThemeContext';
 
+
+
 const ThemeProvider = (props: PropsWithChildren<{}>) => {
     const [theme, setTheme] = useState<string>('');
+    
     
     useEffect(() => {
      const savedTheme = localStorage.getItem('theme');
@@ -12,16 +15,18 @@ const ThemeProvider = (props: PropsWithChildren<{}>) => {
     }, [])
     
     useEffect(() => {
-    saveTheme(theme);
+    if(theme && theme != ''){
+      saveTheme(theme);
+    }
     }, [theme])
     
-
+    
     const saveTheme = (name: string)=> {
-        localStorage.setItem('theme', name)
+        localStorage.setItem('theme', theme)
     }
 
   return (
-    <ThemeContext.Provider value={{theme, setTheme}}>
+    <ThemeContext.Provider value={{theme, setTheme, saveTheme}}>
         <div data-theme={theme}>
             {props.children}
         </div>

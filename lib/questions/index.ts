@@ -60,3 +60,16 @@ export const Patterns: Pattern[] = [
 // export function getPattern(index: number){
 //     return Pattern[index]
 // }
+
+export function getNextAndPrev(index: number): {next: string|undefined, prev: string|undefined}{
+    const obj: {next: string|undefined, prev: string|undefined} = {
+        next: undefined,
+        prev: undefined
+    }
+    if(index > Patterns.length || index < 0) return obj;
+
+    obj['next'] = index === Patterns.length - 1 ? undefined : `${index+1}`;
+    obj['prev'] = index === 1 ? undefined : `${index-1}`;
+
+    return obj;
+}

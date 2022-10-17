@@ -12,6 +12,7 @@ const QuestionPage: NextPage = () => {
     const [pattern, setPattern] = useState<Question>();
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [isNotFound, setIsNotFound] = useState<boolean>(true);
+    const [patternId, setPatternnId] = useState<string>();
     useEffect(() => {
       const id = query['id'];
       console.log("Id: ", id);
@@ -23,6 +24,7 @@ const QuestionPage: NextPage = () => {
             const pat = Patterns[parseInt(id as string)-1];
             console.log("Pattern dd", parseInt(id as string));
             if(pat){
+              setPatternnId(id as string);
               setPattern(pat.pattern);
               setIsNotFound(false);
             }else{
@@ -32,7 +34,7 @@ const QuestionPage: NextPage = () => {
         }
     }, []);
   return (
-    <div>
+    <div className='py-10'>
       {
         isNotFound ?
         <div className='h-screen flex items-center justify-center'>
@@ -40,7 +42,12 @@ const QuestionPage: NextPage = () => {
         </div>
         :
         pattern
-        ?<QuestionLayout question={pattern}/>
+        ?<div>
+          <div className="hidden md:block"><QuestionLayout question={pattern} patternId={patternId||''}/></div>
+          <div className="flex items-center justify-center md:hidden px-5 h-[calc(100vh-200px)]">
+            <h3 className='text-xl font-bold'>We are sorry! <br/> Currently, this site is supported only <span className='text-primary'>Tablet</span> and <span className='text-primary'>Desktop</span> screen <br/> <span className='text-primary text-2xl'>Mobile version available soon!</span></h3>
+          </div>
+        </div>
         :<div className='h-screen flex items-center justify-center'>
         <h1 className="text-3xl">Loading...</h1>
       </div>
