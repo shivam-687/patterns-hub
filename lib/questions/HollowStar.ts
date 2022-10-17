@@ -11,15 +11,10 @@ export default class HollowStar extends Question {
     this.codeData = [
       {
         codeTemplate: codeStr,
-        map: { '1': [4], '2': [5] },
+        map: { '1': [5], '2': [6, 7, 8], '3': [6, 10, 11, 12], '4': [6, 14, 15] },
         lang: Langs.JAVASCRIPT
       },
-      {
-        codeTemplate: c_str,
-        map: { '1': [8], '2': [10] },
-        lang: Langs.C_LANG
-      },
-      
+
     ]
   }
 
@@ -33,38 +28,64 @@ export default class HollowStar extends Question {
       n,
       j: 0,
       i: 0,
+      c1: false,
+      c2: false,
+      c3: false
     }
     // defining an empty string
     let string = "";
+
     for (let i = 0; i < n; i++) { // external loop
+      data['i'] = i;
       this.changeRow(i, 1, JSON.parse(JSON.stringify(data)))
       for (let j = 0; j < n; j++) { // internal loop
-        string += "*";
-        data['j'] = j;
-        data['i'] = i
-        this.addProcess(i, '*', 2, JSON.parse(JSON.stringify(data)))
+        if (i === 0 || i === n - 1) {
+          string += "*";
+          data['i'] = i;
+          data['j'] = j;
+          data['c1'] = true
+          this.addProcess(j, '*', 2, JSON.parse(JSON.stringify(data)))
+        }
+        else {
+          if (j === 0 || j === n - 1) {
+            string += "*";
+            data['i'] = i;
+            data['j'] = j;
+            data['c1'] = false;
+            data['c2'] = true;
+            this.addProcess(j, '*', 3, JSON.parse(JSON.stringify(data)))
+          }
+          else {
+            string += " ";
+            data['i'] = i;
+            data['j'] = j;
+            data['c1'] = false;
+            data['c2'] = false;
+            data['c3'] = true
+            this.addProcess(j, '_', 4, JSON.parse(JSON.stringify(data)))
+          }
+        }
       }
       // newline after each row
-      string += "\\n";
+      string += "\n";
     }
-
 
   }
 
 }
 
 const codeStr = `
-let n = 5; // row or column count
+let n = {{n}}; // row or column count
 // defining an empty string
 let string = "";
 
-for(let i = 0; i < n; i++) { // external loop
-  for(let j = 0; j < n; j++) { // internal loop
-    if(i === 0 || i === n - 1) {
+for(let i = 0; {{i}} < {{n}}; i++) { // external loop
+  for(let j = 0; {{j}} < {{n}}; j++) { // internal loop
+    if({{i}} === 0 || {{i}} === {{n}} - 1) { // {{c1}}
       string += "*";
     }
     else {
-      if(j === 0 || j === n - 1) {
+      if({{j}} === 0 || {{j}} === {{n}} - 1) { // {{c2}}
         string += "*";
       }
       else {
@@ -73,7 +94,7 @@ for(let i = 0; i < n; i++) { // external loop
     }
   }
   // newline after each row
-  string += "\n";
+  string += "\\n";
 }
 // printing the string
 console.log(string);

@@ -1,5 +1,8 @@
 import { Question } from "../Question";
+import HollowStar from "./HollowStar";
+import LeftTriangle from "./LeftTriangle";
 import Question1 from "./Question1";
+import RightTriangle from "./RightTriangle";
 import SqaureStar from "./SquareStar";
 
 export type Pattern = {
@@ -21,24 +24,24 @@ export const Patterns: Pattern[] = [
         }
     },
     {
-        pattern: new Question1,
+        pattern: new HollowStar(),
         meta: {
             title: 'Hollow Square Star Pattern',
             thumbnail: '/assets/images/patterns/hollow-square.jpg'
         }
     },
     {
-        pattern: new Question1,
+        pattern: new RightTriangle,
         meta: {
             title: 'Right Triangle Pattern',
             thumbnail: '/assets/images/patterns/right-triangle.jpg'
         }
     },
     {
-        pattern: new Question1,
+        pattern: new LeftTriangle,
         meta: {
-            title: 'Square Star Pattern',
-            thumbnail: '/assets/images/patterns/pyramid-star.jpg'
+            title: 'Left Traingle Pattern',
+            thumbnail: '/assets/images/patterns/left-triangle.jpg'
         }
     },
     {
