@@ -1,6 +1,7 @@
 # Patterns_Hub
+![Home Page](https://user-images.githubusercontent.com/75787732/220925087-bba55602-d425-45a7-8144-e8f39bd74215.png)
 
-![Patterns_hub](https://user-images.githubusercontent.com/75787732/220924883-5cbd7e30-9b8c-4e2b-b712-ccf993bc53fc.png)
+![Visualizer Page](https://user-images.githubusercontent.com/75787732/220924883-5cbd7e30-9b8c-4e2b-b712-ccf993bc53fc.png)
 
 
 Patterns Hub is a Next.js web application that helps visualize how star patterns are generated and how the algorithm works. This app allows users to pause/play the visualization, forward and backward the algorithm steps, control the speed of the visualization, and change the pattern size. 
